@@ -16,11 +16,9 @@ tickers = []
 garbageCollector = {'SEC', 'GICS', 'CIK', 'IT', 'UK', 'BNY', 'HP', 'IDEX', 'IHS', 'IPG', 'KLA', 'TE', 'SVB'}
 for i in range(0, len(rawStockData) - 1, 1):
     if rawStockData[i].isupper() and len(rawStockData[i]) <= 4 and rawStockData[i].isalpha() and not rawStockData[i] in garbageCollector:
-        if tickers[i - 1] == tickers[i]:
-            i = i + 1
-        tickers.append(rawStockData[i])
+        if rawStockData[i - 1] != rawStockData[i]:
+            tickers.append(rawStockData[i])
 marketbeat = Marketbeat.Marketbeat()
-#print(tickers)
 for i in range(0, len(tickers) - 1, 1):
     marketbeat.readmarketdata(tickers[i])
 marketbeat.institutionaldatatocsv()
