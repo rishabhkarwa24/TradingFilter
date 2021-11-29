@@ -129,7 +129,7 @@ class Marketbeat:
             stockInfo.append((name + oneYear + twoYear))
 
 
-    def institutionaldatatocsv():
+    def institutionaldatatocsv(self):
         df = pd.DataFrame(stockInfo)
         # Moving all stock data to CSV
         df.to_csv('stock_info.csv', index=False, header=False, encoding='utf-8')
