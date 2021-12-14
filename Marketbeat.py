@@ -1,6 +1,7 @@
 import requests
 from bs4 import BeautifulSoup
 import pandas as pd
+import Stock
 
 url1 = 'https://www.marketbeat.com/stocks/NASDAQ/'
 url2 = '/institutional-ownership/'
@@ -126,7 +127,7 @@ class Marketbeat:
             twoYear = '2 Year Buy/Sell Ratio: ' + str(round(twoYearRatio, 2)) + ', '
             oneYear = '1 Year Buy/Sell Ratio: ' + str(round(oneYearRatio, 2))
             # Adding the stock info to the CSV file
-            stockInfo.append((name + oneYear + twoYear))
+            stockInfo.append((name + twoYear + oneYear))
 
 
     def institutionaldatatocsv(self):
