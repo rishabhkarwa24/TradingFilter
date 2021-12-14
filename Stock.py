@@ -1,13 +1,8 @@
 # This class contains a Stock object which will be used in the future implementation as more fields may be needed.
 # The tree implementation will also need a Stock object to find on search
-import dateutil.utils
 import yfinance as yf
 import datetime
 from pandas.tseries.offsets import BDay
-import time
-import requests
-import io
-import seaborn as sns
 
 
 class Stock:
@@ -38,23 +33,9 @@ class Stock:
         price = stock.info['regularMarketPrice']
         priceAndPercentChange.append(price)
         yesterday = datetime.datetime.today() - BDay(1)
+        #Get the two business day range of the stocck
         stock_data = yf.download("ABBV", start=yesterday, end=datetime.datetime.today(), progress=False)
-        val = stock_data['Open'].values[1]
-        priceAndPercentChange.append(val)
+        #percent change over the last two days
+        percentChange = ((price - stock_data['Close'].values[0]) / stock_data['Close'].values[0]) * 100
+        priceAndPercentChange.append(str(round(percentChange, 2)))
         return priceAndPercentChange
-
-s = Stock('ABBV', 1, 2, 4)
-s.getStockValue('ABBV')
-#tickers = ['ABBV']
-#for ticker in tickers:
-#    ticker_yahoo = yf.Ticker(ticker)
-#    data = ticker_yahoo.history()
-#    last_quote = (data.tail(1)['Close'].iloc[0])
-#    print(ticker,last_quote)
-
-#yesterday = datetime.datetime.today() - BDay(1)
-#print(yesterday)
-#stock = yf.download("ABBV", start=yesterday, end=datetime.datetime.today(), progress=False)
-#print(stock)
-#val = stock['Open'].values[1]
-#print(val)

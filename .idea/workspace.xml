@@ -1,11 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="885784b9-391a-49fb-9577-7e49db8fad5a" name="Changes" comment="Merge remote-tracking branch 'origin/master'">
+    <list default="true" id="885784b9-391a-49fb-9577-7e49db8fad5a" name="Changes" comment="Added features to track one day percent change and price for Stocks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Marketbeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/Marketbeat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/Stock.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/stock_info.csv" beforeDir="false" afterPath="$PROJECT_DIR$/stock_info.csv" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -136,7 +134,14 @@
       <option name="project" value="LOCAL" />
       <updated>1638162035275</updated>
     </task>
-    <option name="localTasksCounter" value="6" />
+    <task id="LOCAL-00006" summary="Added features to track one day percent change and price for Stocks">
+      <created>1639470164652</created>
+      <option name="number" value="00006" />
+      <option name="presentableId" value="LOCAL-00006" />
+      <option name="project" value="LOCAL" />
+      <updated>1639470164652</updated>
+    </task>
+    <option name="localTasksCounter" value="7" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
@@ -155,6 +160,7 @@
     <MESSAGE value="deleted" />
     <MESSAGE value="Added current documentation for the .py files" />
     <MESSAGE value="Merge remote-tracking branch 'origin/master'" />
-    <option name="LAST_COMMIT_MESSAGE" value="Merge remote-tracking branch 'origin/master'" />
+    <MESSAGE value="Added features to track one day percent change and price for Stocks" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added features to track one day percent change and price for Stocks" />
   </component>
 </project>
