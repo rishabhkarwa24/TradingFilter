@@ -15,7 +15,7 @@ class Marketbeat:
         """
         This method reads the marketbeat data for a stock
         :param stock: the name of the stock
-        :return: NULL
+        :return: the Stock
         """
         global url
         # The URL that is created assuming stock belongs in NASDAQ
@@ -26,6 +26,7 @@ class Marketbeat:
         # Getting the name of stock plus additional information
         results = soup.find('title').get_text()
         name = results.split()
+        ticker = name[0]
         # Getting the ticker symobol (name[0]) and full name of the company(rest of code)
         name = name[0] + ' ' + results[results.find('('):results.find(')') + 1] + ': '
 
@@ -128,7 +129,9 @@ class Marketbeat:
             oneYear = '1 Year Buy/Sell Ratio: ' + str(round(oneYearRatio, 2))
             # Adding the stock info to the CSV file
             stockInfo.append((name + twoYear + oneYear))
-
+            value = Stock.getStockValue(ticker)
+            s = Stock.Stock(ticker, str(round(oneYearRatio, 2)), str(round(twoYearRatio, 2)), value[0], value[1])
+            return s
 
     def institutionaldatatocsv(self):
         df = pd.DataFrame(stockInfo)

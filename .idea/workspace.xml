@@ -3,6 +3,7 @@
   <component name="ChangeListManager">
     <list default="true" id="885784b9-391a-49fb-9577-7e49db8fad5a" name="Changes" comment="Added features to track one day percent change and price for Stocks">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Marketbeat.py" beforeDir="false" afterPath="$PROJECT_DIR$/Marketbeat.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Stock.py" beforeDir="false" afterPath="$PROJECT_DIR$/Stock.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -42,7 +43,7 @@
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="last_opened_file_path" value="$PROJECT_DIR$/Stock.py" />
   </component>
-  <component name="RunManager" selected="Python.Stock.py">
+  <component name="RunManager" selected="Python.spy.py">
     <configuration name="Stock.py" type="PythonConfigurationType" factoryName="Python">
       <module name="TradingFilter" />
       <option name="INTERPRETER_OPTIONS" value="" />
@@ -141,7 +142,14 @@
       <option name="project" value="LOCAL" />
       <updated>1639470164652</updated>
     </task>
-    <option name="localTasksCounter" value="7" />
+    <task id="LOCAL-00007" summary="Added features to track one day percent change and price for Stocks">
+      <created>1639500157077</created>
+      <option name="number" value="00007" />
+      <option name="presentableId" value="LOCAL-00007" />
+      <option name="project" value="LOCAL" />
+      <updated>1639500157077</updated>
+    </task>
+    <option name="localTasksCounter" value="8" />
     <servers />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
