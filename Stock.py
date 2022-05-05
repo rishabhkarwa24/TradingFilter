@@ -1,5 +1,4 @@
 # This class contains a Stock object which will be used in the future implementation as more fields may be needed.
-# The tree implementation will also need a Stock object to find on search
 import yfinance as yf
 import datetime
 from pandas.tseries.offsets import BDay
@@ -35,7 +34,7 @@ def getStockValue(name):
     price = stock.info['regularMarketPrice']
     priceAndPercentChange.append(price)
     yesterday = datetime.datetime.today() - BDay(1)
-    # Get the two business day range of the stocck
+    # Get the two business day range of the stock
     stock_data = yf.download(name, start=yesterday, end=datetime.datetime.today(), progress=False)
     # percent change over the last two days
     percentChange = ((price - stock_data['Close'].values[0]) / stock_data['Close'].values[0]) * 100

@@ -27,6 +27,7 @@ class Marketbeat:
         results = soup.find('title').get_text()
         name = results.split()
         ticker = name[0]
+
         # Getting the ticker symobol (name[0]) and full name of the company(rest of code)
         name = name[0] + ' ' + results[results.find('('):results.find(')') + 1] + ': '
 
@@ -57,7 +58,7 @@ class Marketbeat:
             institutionalSells1Year = 0
 
             # Getting the one year buy and sell amount for the stock
-            name_list = soup.find_all("div", class_='datapoint-heading mt-2 mb-1')
+            name_list = soup.find_all("div", class_='stat-summary-heading mt-2 mb-1')
             for i in name_list:
                 if i.get_text().find(" B") != -1:
                     if institutionalBuys1Year == 0:
@@ -104,17 +105,19 @@ class Marketbeat:
             institutionalBuys1Year = 0
             institutionalSells1Year = 0
 
-            name_list = soup.find_all("div", class_='datapoint-heading mt-2 mb-1')
+            name_list = soup.find_all("dd", class_='stat-summary-heading mt-2 mb-1')
             for i in name_list:
                 if i.get_text().find(" B") != -1:
                     if institutionalBuys1Year == 0:
                         institutionalBuys1Year = i.get_text()
                         institutionalBuys1Year = institutionalBuys1Year[1:-2]
-                    if institutionalBuys1Year != 0:
+
+            name_list = soup.find_all("dd", class_='stat-summary-heading my-1')
+            for i in name_list:
+                if i.get_text().find(" B") != -1:
+                    if institutionalSells1Year == 0:
                         institutionalSells1Year = i.get_text()
                         institutionalSells1Year = institutionalSells1Year[1:-2]
-                        if (institutionalBuys1Year != institutionalSells1Year):
-                            break
 
         # If the institutional sell amount could not be found, return from the function
         if (float(institutionalSells1Year) <= 0):
@@ -124,16 +127,18 @@ class Marketbeat:
 
         # If either condition is fulfilled, the stock has considerable institutional support
         if (twoYearRatio > 1 and oneYearRatio > 1.2) or oneYearRatio > 1.5:
-            #print(name)
-            twoYear = '2 Year Buy/Sell Ratio: ' + str(round(twoYearRatio, 2)) + ', '
-            oneYear = '1 Year Buy/Sell Ratio: ' + str(round(oneYearRatio, 2))
-            # Adding the stock info to the CSV file
-            stockInfo.append((name + twoYear + oneYear))
-            value = Stock.getStockValue(ticker)
+            twoYear = '2 Year ratio: ' + str(round(twoYearRatio, 2))
+            oneYear = '1 Year ratio: ' + str(round(oneYearRatio, 2)) + ', '
+            value = Stock.getStockValue(stock)
             s = Stock.Stock(ticker, str(round(oneYearRatio, 2)), str(round(twoYearRatio, 2)), value[0], value[1])
-            return s
+            percentChange = s.percentChange
+            percent = str(round(float(percentChange), 2)) + '%, '
+            # Adding the stock info to the CSV file if it should be bought
+            if (float(percentChange) < -5):
+                stockInfo.append((name + percent + oneYear + twoYear))
+                return s
 
     def institutionaldatatocsv(self):
         df = pd.DataFrame(stockInfo)
         # Moving all stock data to CSV
-        df.to_csv('stock_info.csv', index=False, header=False, encoding='utf-8')
+        df.to_csv('stocks_to_buy.csv', index=False, header=False, encoding='utf-8')
